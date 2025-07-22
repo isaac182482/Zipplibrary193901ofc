@@ -1,0 +1,48 @@
+local ZippLib = {}
+
+function ZippLib:CreateWindow(title)
+	local gui = Instance.new("ScreenGui")
+	gui.Name = "ZippLibUI"
+	gui.ResetOnSpawn = false
+	gui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+
+	local frame = Instance.new("Frame")
+	frame.Size = UDim2.new(0, 300, 0, 200)
+	frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+	frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	frame.BorderSizePixel = 0
+	frame.Name = "MainFrame"
+	frame.Parent = gui
+
+	local titleLabel = Instance.new("TextLabel")
+	titleLabel.Size = UDim2.new(1, -30, 0, 30)
+	titleLabel.Position = UDim2.new(0, 0, 0, 0)
+	titleLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	titleLabel.BorderSizePixel = 0
+	titleLabel.Text = title
+	titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	titleLabel.Font = Enum.Font.SourceSans
+	titleLabel.TextSize = 20
+	titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+	titleLabel.Name = "Title"
+	titleLabel.Parent = frame
+
+	local closeButton = Instance.new("TextButton")
+	closeButton.Size = UDim2.new(0, 30, 0, 30)
+	closeButton.Position = UDim2.new(1, -30, 0, 0)
+	closeButton.BackgroundTransparency = 1
+	closeButton.Text = "X"
+	closeButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+	closeButton.Font = Enum.Font.SourceSans
+	closeButton.TextSize = 20
+	closeButton.Name = "CloseButton"
+	closeButton.Parent = frame
+
+	closeButton.MouseButton1Click:Connect(function()
+		gui:Destroy()
+	end)
+
+	return frame
+end
+
+return ZippLib
